@@ -1,0 +1,10 @@
+<h2><%= @username %>のマイページ</h2><br>
+<%= image_tag current_user.image %><br>
+<h2>投稿一覧</h2>
+<% @user_posts.each do |post| %>
+  <h3>イラスト</h3><br>
+  <%= image_tag post.image %><br>
+  <h3>説明文</h3><br>
+  <%= post.content %><br>
+<h2></h2>
+<% end %>
