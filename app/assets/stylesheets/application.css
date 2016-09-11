@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.header {
+  padding-bottom: 30px;
+}
+
+
+ .scale-adjust {
+   width: 300px;
+   height: 300px;
+   margin: 20px;
+   border: solid 1px #000000;
+   float :left;
+ }
+
+.post {
+  clear: both;
+}
+
+.user-page-scale-adjust {
+  width: 400px;
+  height: auto;
+  padding: 30px;
+  border: solid 1px #000000;
+  float :left;
+}

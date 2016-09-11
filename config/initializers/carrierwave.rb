@@ -15,4 +15,6 @@ CarrierWave.configure do |config|
         config.fog_directory  = 'shiroqma'
         config.asset_host = 'https://s3.amazonaws.com/shiroqma'
     end
+
+    CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
 end

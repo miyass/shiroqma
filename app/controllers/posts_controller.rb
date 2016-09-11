@@ -1,16 +1,18 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, except: [:index]
+  before_action :ban_edit, only: :edit
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.order('updated_at ASC') .page(params[:page]).per(10)
+    @posts = Post.all.order('updated_at DESC').page(params[:page]).per(8)
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comments = @post.comments
   end
 
   # GET /posts/new
@@ -65,6 +67,11 @@ class PostsController < ApplicationController
     end
   end
 
+
+  def search
+    @search_post = Post.where('title LIKE(?)', "%#{params[:keyword]}%")
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -73,11 +80,15 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:content, :image).merge(user_id: current_user.id)
+      params.require(:post).permit(:title ,:content, :image, :video).merge(user_id: current_user.id)
     end
 
     def move_to_index
       redirect_to action: :index unless user_signed_in?
+    end
+
+    def ban_edit
+      redirect_to action: :index unless @post.user.id == current_user.id
     end
 
 

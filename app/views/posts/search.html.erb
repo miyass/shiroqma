@@ -1,0 +1,9 @@
+<% @search_post.each do |search_result| %>
+  <h2>ユーザーネーム</h2>
+  <%= search_result.user.username %>
+  <%= link_to 'このユーザーのページへ', user_path(search_result.user_id) %>
+  <a href="/users/<%= search_result.user.id %>">このユーザーのページへ</a>
+  <h2><%= search_result.title %><h2>
+  <%= image_tag search_result.image %>
+  <p>わかりにくいので追記：ここまでで1検索分</p>
+<% end %>

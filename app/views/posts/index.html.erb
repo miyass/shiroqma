@@ -1,21 +1,26 @@
-<p id="notice"><%= notice %></p>
-
+<div class="index">
+<h1>トップページ</h1>
   <tbody>
     <% @posts.each do |post| %>
-
-      <a href="/users/<%= post.user_id %>">
-        <%= image_tag post.image.url %>
-      </a>
-        <!-- <%= post.content %>
-        <%= link_to 'Show', post %>
-        <%= link_to 'Edit', edit_post_path(post) %>
-        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+      <div class="scale-adjust" >
+        <% unless post.image.blank? %>
+          <%= image_tag(post.image.url, :class => "image-size") %><br>
+        <% end %>
+          <%= post.text %><br>
+        <% unless post.video.blank? %>
+          <%= video_tag(post.video, :width => 200, :height => 200) %><br>
+        <% end %>
+        投稿した人：<%= post.user.username %><br>
+        <% if user_signed_in? %>
+          <a href="/users/<%= post.user_id %>">この人のマイページ</a>
+          <a href='/posts/<%= post.id %>'>詳細はこちら</a>
+        <% end %>
+      </div>
     <% end %>
   </tbody>
-</table>
-
 <br>
-
-
-<%= link_to 'New Post', new_post_path %>
+<div class="post">
+  <h2><%= link_to '投稿する', new_post_path %></h2>
+</div>
 <%= paginate(@posts) %>
+</div>

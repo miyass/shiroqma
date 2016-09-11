@@ -9,17 +9,26 @@
 <body>
 
 <header class="header">
-  <!-- ここに検索フォーム作成 -->
-<%= link_to 'トップへ', root_path, method: :get %>
-  <% if user_signed_in? %>
-    <%= link_to '投稿する', new_post_path, method: :get %>
-    <a href="/users/<%= current_user.id %>">マイページ</a>
-    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to 'ログイン', new_user_session_path, method: :get %>
-    <%= link_to '新規登録', new_user_registration_path, method: :get %>
+<div class="left">
+  <%= form_tag('/posts/search', method: :get) do %>
+    <input name="keyword" type="text" placeholder="タイトルで検索">
+    <button class="btn-search" title="検索" type="submit">検索</button>
+    </input>
   <% end %>
-</header>
+</div>
+
+<div class="right">
+  <%= link_to 'トップへ', root_path, method: :get %>
+    <% if user_signed_in? %>
+      <%= link_to '投稿する', new_post_path, method: :get %>
+      <a href="/users/<%= current_user.id %>">マイページ</a>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'ログイン', new_user_session_path, method: :get %>
+      <%= link_to '新規登録', new_user_registration_path, method: :get %>
+    <% end %>
+  </header>
+</div>
 <%= yield %>
 
 

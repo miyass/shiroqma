@@ -1,6 +1,11 @@
 <%= form_for(@post) do |f| %>
-
+  <p>タイトル</p>
+  <%= f.text_field :title %><br>
+  <p>画像ファイル</p>
   <%= f.file_field :image %><br>
+  <p>動画ファイル</p>
+  <%= f.file_field :video, :accept => 'video/*' %><br>
+  <p>内容</p>
   <%= f.text_area :content %>
   <div class="actions">
     <%= f.submit %>

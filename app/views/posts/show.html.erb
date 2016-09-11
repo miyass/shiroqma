@@ -1,7 +1,24 @@
-<p id="notice"><%= notice %></p>
 
-<%= @post.content %><br>
+<h2><タイトル></h2>
+<%= @post.title %>
+<h2><イラスト></h2>
+<%= image_tag @post.image %><br>
+<h2>動画</h2>
+<%= video_tag(@post.video, :controls => true, :width => 500, :height => 500) %>
+<h2><説明文></h2>
+<%= @post.content %>
 
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<% if current_user %>
+  <h2>コメントする</h2>
+  <%= form_tag("/posts/#{@post.id}/comments", method: :post) do %>
+    <textarea name='text'></textarea><br>
+    <input type="submit" value="コメント">
+  <% end %>
+<% end %>
+<h2><コメント一覧></h2>
+<% @comments.each do |comment| %>
+<div class="comment-margin">
+  ユーザーネーム：<%= comment.user.username %><br>
+  コメント内容：<%= comment.text %><br>
+</div>
+<% end %>

@@ -1,10 +1,25 @@
-<h2><%= @username %>のマイページ</h2><br>
-<%= image_tag current_user.image %><br>
+<h2><%= @username %>のページ</h2><br>
+<%= image_tag @user_image %><br>
 <h2>投稿一覧</h2>
 <% @user_posts.each do |post| %>
-  <h3>イラスト</h3><br>
-  <%= image_tag post.image %><br>
-  <h3>説明文</h3><br>
-  <%= post.content %><br>
-<h2></h2>
+  <div class="user-page-scale-adjust">
+    <h3>タイトル</h3>
+    <%= post.title %>
+    <h3>イラスト</h3>
+    <%= image_tag post.image %><br>
+    <% unless post.video.blank? %>
+      <h3>ビデオ(音楽)</h3>
+      <%= video_tag(post.video, :controls => true, :width => 200, :height => 200) %><br>
+    <% end %>
+    <h3>説明文</h3>
+    <%= post.content %><br>
+    <% if post.user.id == current_user.id %>
+      <a href='/posts/<%= post.id %>/edit'>編集</a>
+    <% end %>
+    <h3>コメント</h3>
+    <% post.comments.each do |comment| %>
+      ユーザーネーム：<%= comment.user.username %>
+      コメント内容：<%= comment.text %><br>
+    <% end %>
+  </div>
 <% end %>
