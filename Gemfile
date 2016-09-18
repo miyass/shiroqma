@@ -50,4 +50,8 @@ gem 'devise'
 gem 'kaminari'
 gem 'carrierwave'
 gem 'fog'
-gem 'rails_12factor'
+
+
+group :production, :staging do
+  gem 'rails_12factor'
+end
