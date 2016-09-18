@@ -51,7 +51,6 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'fog'
 
-
 group :production, :staging do
   gem 'rails_12factor'
 end
