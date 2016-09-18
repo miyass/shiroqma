@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 20160910060326) do
     t.string   "univ_name",              limit: 255
     t.integer  "univ_year",              limit: 4
     t.string   "image",                  limit: 255
-    t.string   "video",                  limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
