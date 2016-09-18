@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<header class="header">
+<!-- <header class="header">
 <div class="left">
   <%= form_tag('/posts/search', method: :get) do %>
     <input name="keyword" type="text" placeholder="タイトルで検索">
@@ -27,8 +27,47 @@
       <%= link_to 'ログイン', new_user_session_path, method: :get %>
       <%= link_to '新規登録', new_user_registration_path, method: :get %>
     <% end %>
+    </div>
   </header>
+ -->
+
+<div id="headerbg">
+      <ul class="menu-">
+        <li class="menu-case">
+          <div class="menu-name" id="logo"><%= image_tag 's_logo.png' %></div>
+        </li>
+        <li class="menu-case">
+          <div class="menu-name">home</div>
+        </li>
+        <li class="menu-case">
+          <div class="menu-name">feed</div>
+          <ul class="menu-list">
+            <li class="menu-one">follow</li>
+            <li class="menu-one">circle</li>
+            <li class="menu-one">college</li>
+            <li class="menu-one">year</li>
+          </ul>
+        </li>
+        <li class="menu-case">
+          <div class="menu-name">category</div>
+          <ul class="menu-list">
+            <li class="menu-one">picture</li>
+            <li class="menu-one">illust</li>
+            <li class="menu-one">music</li>
+            <li class="menu-one">movie</li>
+          </ul>
+        </li>
+        <% if user_signed_in? %>
+          <li class="menu-case"><%= link_to '投稿する', new_post_path, method: :get, :class => 'menu-name' %></li>
+          <li class="menu-case"><a href="/users/<%= current_user.id %>", class="menu-name">マイページ</a></li>
+          <li class="menu-case"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,:class => 'menu-name' %><li>
+        <% else %>
+          <li class="menu-case"><%= link_to 'ログイン', new_user_session_path, method: :get, :class => 'menu-name' %></li>
+          <li class="menu-case"><%= link_to '新規登録', new_user_registration_path, method: :get, :class => 'menu-name' %></li>
+        <% end %>
+      </ul>
 </div>
+
 <%= yield %>
 
 

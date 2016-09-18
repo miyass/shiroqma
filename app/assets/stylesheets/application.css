@@ -47,3 +47,146 @@
   border: solid 1px #000000;
   float :left;
 }
+
+
+
+
+
+html {
+    overflow: auto;
+}
+body {
+    overflow: hidden;
+    position: relative;
+    min-width: 1000px;
+    background-image: url('r_haikei.png');
+    background-repeat: repeat;
+}
+
+
+.menu-{
+    box-sizing : content-box;
+    margin: 0;
+    overflow-x: hidden;
+    width: 9999px;
+}
+
+.menu-, .menu-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  background-color: #002955
+
+}
+
+.menu-name{
+    margin-top: 35px;
+    color: white;
+    font-style: Arial;
+    padding-left: 35px;
+    font-size: 20px;
+}
+
+#logo{
+    margin-left: 0%;
+}
+
+.menu-one{
+    color: white;
+    background-color: #002955;
+    margin-top: 30px;
+    padding-left: 5px;
+    padding-bottom: 10px;
+}
+.menu-case {
+  float: left;
+  padding-bottom: 5px;
+}
+
+.menu-:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+
+.menu-list {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  width: 10em;
+}
+
+
+.menu-name:hover + .menu-list, .menu-list:hover {
+  opacity: 1;
+  z-index: 1;
+}
+
+.menu-case:hover .menu-name  {
+  color: #507ea4;
+}
+
+.menu-one:hover{
+    color: white;
+    text-decoration: underline;
+}
+
+#headerbg{
+    position: fixed;
+}
+
+
+#mainBox {
+    width: 50%;
+    margin-top: 100px;
+    margin-left: 120px;
+}
+#parent {
+    width: 200%;
+    margin: 0 auto 0 auto;
+}
+#parent .child {
+    width: 300px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    float: left;
+    display: inline;    /*for ie*/
+    font-size: 12px;
+}
+#parent .child .img {
+    width: 200px;
+    height: 220px;
+    background-color: white;
+    margin-bottom: 12px;
+    border: 0.5px solid #cccccc;
+}
+#parent .child .title {
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+
+
+.title{
+    position: relative;
+    bottom: 50px;
+    left: 10px;
+    font-size: 15px;
+    font-weight: 0.5px;
+}
+#footer {
+    font-size: 20px;
+    color: #ccc;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    padding: 10px 0 20px;
+}
+
+@media screen and ( max-width:479px )
+{
+body{
+        color: #f00 ;   /* 赤色 */
+    }
+
+}
