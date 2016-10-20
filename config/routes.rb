@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
   resources :users, only: [:show]
+  post '/users/follow' => 'users#follow'
+  post '/users/unfollow' => 'users#unfollow'
   root 'posts#index'
-  # get 'users/:id' => 'users#show'
+  # get 'users/:id' => 'users#show
 end

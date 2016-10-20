@@ -1,5 +1,15 @@
 <h2><%= @username %>のページ</h2><br>
 <%= image_tag @user_image %><br>
+<% unless current_user.id == $user.id %>
+  <%= button_to 'フォローする', users_follow_path, {:remote => true} %>
+  <% if current_user.following?($user) %>
+    <%= button_to 'フォローを外す', users_unfollow_path , {:remote => true} %>
+  <% end %>
+<% end %>
+<h2>フォロー一覧</h2>
+<% current_user.following.each do |follow| %>
+  <%= follow.username %>
+<% end %>
 <h2>投稿一覧</h2>
 <% @user_posts.each do |post| %>
   <div class="user-page-scale-adjust">
