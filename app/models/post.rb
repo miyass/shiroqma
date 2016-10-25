@@ -4,4 +4,6 @@ class Post < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   mount_uploader :video, VideoUploader
   # validates :video, :presence => true
+  acts_as_taggable
+  acts_as_taggable_on :hashtags
 end

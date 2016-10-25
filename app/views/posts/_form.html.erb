@@ -7,6 +7,8 @@
   <%= f.file_field :video, :accept => 'video/*' %><br>
   <p>内容</p>
   <%= f.text_area :content %>
+  <p>タグ</p>
+  <%= text_field_tag 'post[hashtag_list]', @post.hashtag_list.join(',') %>
   <div class="actions">
     <%= f.submit %>
   </div>

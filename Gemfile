@@ -51,6 +51,7 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'fog'
 gem 'resonance'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 group :production, :staging do
   gem 'rails_12factor'
