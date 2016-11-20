@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: shiroqma_production
-  username: shiroqma
-  password: <%= ENV['SHIROQMA_DATABASE_PASSWORD'] %>
+  username: root
+  password:
